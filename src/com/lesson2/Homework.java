@@ -23,7 +23,7 @@ public class Homework {
     static int[] arrSecondTask = new int[8];
     static int[] arrThirdTask = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
     static int[][] arrFourthTask = new int[7][7];
-    static int[] test = {7,2,1,4};
+    static int[] arrSixthTaskBalanced = {7,2,1,4};
 
 
     public static void main(String[] args) {
@@ -41,15 +41,12 @@ public class Homework {
 //
 //        System.out.println(displayTaskTitle("Fifth"));
 //        findMinAndMaxElements(arrThirdTask);
-
-        System.out.println(displayTaskTitle("Sixth"));
-        System.out.println("Does your array balanced: " + isArrayBalanced(test));
 //
-//        System.out.println(displayTaskTitle("Seventh"));
+//        System.out.println(displayTaskTitle("Sixth"));
+//        System.out.println("Does your array balanced: " + isArrayBalanced(arrSixthTaskBalanced));
 //
-//
-//        System.out.println(displayTaskTitle("Eighth"));
-
+        System.out.println(displayTaskTitle("Seventh"));
+        shiftElement(arrSixthTaskBalanced, 1);
     }
 
     private static String displayTaskTitle(String title) {
@@ -127,19 +124,33 @@ public class Homework {
             if (leftSum < rightSum || (leftSum == rightSum && arr[i] <= arr[k])) {
                     leftSum += arr[i];
                     i++;
-                } else if (leftSum > rightSum) {
+                } else {
                     rightSum +=arr[k];
                     k--;
                 }
-            if (leftSum == rightSum) {
-                res = true;
-            }
+        }
+        if (leftSum == rightSum) {
+            res = true;
         }
         System.out.println("Left sum: " + leftSum + "\t\tRight sum: " + rightSum);
         return res;
     }
 
+    private static int[] shiftElement(int[] arr, int n) {
+        System.out.println("Default array: " + Arrays.toString(arr));
+        if (n == 0) {
+            System.err.println("Sorry, but I can't shift elements to " + n + " position. Try another position counter");
+        }
 
+        if (n > 0) {
+            for (int i = arr.length - 1; i > 0; i--) {
+                arr[i] += arr[i+n];
+            }
+        }
+
+        System.out.println("Shifted array: " + arr);
+        return arr;
+    }
 
 
 
