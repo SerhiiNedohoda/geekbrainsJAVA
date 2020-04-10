@@ -23,7 +23,7 @@ public class Homework {
     static int[] arrSecondTask = new int[8];
     static int[] arrThirdTask = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
     static int[][] arrFourthTask = new int[7][7];
-    static int[] test = {7,2,1};
+    static int[] test = {7,2,1,4};
 
 
     public static void main(String[] args) {
@@ -124,25 +124,18 @@ public class Homework {
         int leftSum = arr[0], rightSum = arr[arr.length - 1];
 
         for (int i = 1, k = arr.length - 2; i <= k;) {
-            if (leftSum < rightSum) {
+            if (leftSum < rightSum || (leftSum == rightSum && arr[i] <= arr[k])) {
                     leftSum += arr[i];
                     i++;
                 } else if (leftSum > rightSum) {
                     rightSum +=arr[k];
                     k--;
-                } else {
-                    if (arr[i] <= arr[k]) {
-                        leftSum += arr[i];
-                        i++;
-                    } else {
-                        rightSum +=arr[k];
-                        k--;
-                    }
                 }
             if (leftSum == rightSum) {
                 res = true;
             }
         }
+        System.out.println("Left sum: " + leftSum + "\t\tRight sum: " + rightSum);
         return res;
     }
 
